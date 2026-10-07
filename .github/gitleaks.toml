@@ -1,0 +1,13 @@
+# gitleaks (keel-linux/.github, security-scan.yml): the default rules, less
+# the upstream boto test fixtures below: an expired STS session credential
+# recorded in a DynamoDB test and the example CloudFront signing key of the
+# AWS documentation. A new fixture is added here by path once it has been read.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "upstream boto test fixtures"
+paths = [
+  '''^tests/dynamodb/test_layer1\.py$''',
+  '''^tests/cloudfront/test_signed_urls\.py$''',
+]

@@ -1,0 +1,19 @@
+# Security scan baseline (keel-linux/.github, security-scan.yml): findings
+# that were read and are not a risk, one per line, the fingerprint and why.
+bandit:B317:boto/cloudfront/__init__.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/ecs/__init__.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/fps/connection.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/gs/bucket.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/jsonresponse.py:4a4d00d310d0 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/route53/connection.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/s3/bucket.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/s3/connection.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B317:boto/s3/multipart.py:2b0aae854bb2 vendored boto 2: parses the XML responses of the AWS endpoint it connected to over TLS, not attacker-supplied XML
+bandit:B506:boto/contrib/ymlmessage.py:1c15325bba0a vendored boto 2 contrib YAMLMessage, which nothing here or in tklbam uses (tklbam talks to AWS through boto3)
+bandit:B602:boto/manage/task.py:cda51de2b5cf vendored boto 2 manage framework: runs the command its owner configured; unused by tklbam
+semgrep:python.lang.security.audit.insecure-file-permissions.insecure-file-permissions:boto/ec2/keypair.py:c813830b31d5 mode 0600 is owner-only, the rule misreads it
+semgrep:python.lang.security.audit.insecure-file-permissions.insecure-file-permissions:boto/sts/credentials.py:c813830b31d5 mode 0600 is owner-only, the rule misreads it
+semgrep:python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated:boto/connection.py:d08f46247358 deprecated API, but the call sets CERT_REQUIRED with a CA file and checks the hostname right after
+semgrep:python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated:boto/https_connection.py:2fcecd74196a deprecated API, but the call sets CERT_REQUIRED with a CA file and checks the hostname right after
+semgrep:python.lang.security.audit.subprocess-shell-true.subprocess-shell-true:boto/manage/task.py:cda51de2b5cf vendored boto 2 manage framework: runs the command its owner configured; unused by tklbam
+semgrep:python.lang.security.audit.subprocess-shell-true.subprocess-shell-true:boto/utils.py:055d700fe35e vendored boto 2 ShellCommand: runs the command its caller passes; unused by tklbam
