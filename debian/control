@@ -1,7 +1,8 @@
 Source: tklbam-python-boto
 Section: python
 Priority: optional
-Maintainer: Liraz Siri <liraz@turnkeylinux.org>
+Maintainer: KeelLinux maintainers <admin@keellinux.org>
+Uploaders: Marcos Mendez <mendez.foto@gmail.com>
 Build-Depends:
  debhelper (>= 10),
  dh-python2 (>= 4.20201102+turnkey0),
